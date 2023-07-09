@@ -1,0 +1,11 @@
+{
+  "name": "igniting-namaste-react",
+  "version": "1.0.0",
+  "description": "learning namaste react",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Nikhil Arora",
+  "license": "ISC"
+}
