@@ -13,7 +13,7 @@
     const root=ReactDOM.createRoot(document.getElementById("root"))
 
 
-    // heading is an js Object not an h1 Tag yet
+    // heading is an js Object not an h1 Tag yep
     // console.log("Heading",heading)
     console.log("parent",parent)
     
