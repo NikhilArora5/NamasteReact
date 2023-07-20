@@ -14,3 +14,12 @@
 - Minificatioon of code
 - Compressing
 ![Alt text](image.png)
+
+
+## JSX
+- jsx is not HTML in JS
+- Jsx is Html like syntax extension for JS.
+- Jsx written in signle line does not require to be enclosed in () But to write it in Multiple  () is required as babel need to understand where it starts and ends 
+
+## Babel
+- Transpiles JSX codes into React under standable Code
