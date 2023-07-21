@@ -36,7 +36,7 @@ const styleObj={
 const Body=()=>{
     return (
         <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >
-         <div className="search">Search </div>
+         <div className="search">Searc</div>
 
          <div className="res-container">
            <RestaurantCard/>
