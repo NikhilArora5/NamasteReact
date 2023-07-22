@@ -1,0 +1,25 @@
+{
+  "name": "igniting-namaste-react",
+  "version": "1.0.0",
+  "description": "learning namaste react",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start":"parcel index.html",
+    "build":"parcel build index.html"
+  },
+  "author": "Nikhil Arora",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+ "browserslist":[
+"last 2  versions"
+
+ ]
+}

@@ -23,3 +23,25 @@
 
 ## Babel
 - Transpiles JSX codes into React under standable Code
+
+## Namaste Food App
+
+
+/*
+#### Header
+- Logo
+- Nav items
+#### Body
+- Search Bar
+- RestaurantContainer
+  - RestaurantCard
+     - img,name
+     - rating,cuisine,delivery time
+
+#### Footer
+- Copyright
+- Links
+- Adress
+- Contact
+*/
+
