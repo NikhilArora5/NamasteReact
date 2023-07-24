@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard"
 import { resList } from "../utils/mockData"
+import { useState } from "react"
 
 // let resList=[
 //   {
@@ -784,7 +785,10 @@ import { resList } from "../utils/mockData"
 //   }
 // ]
 
+
+
 const Body=()=>{
+  const [restArray,setRestArray]=useState(resList)
     return (
         <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >
          <div className="search">Search</div>
@@ -793,11 +797,14 @@ const Body=()=>{
          
          onClick={()=>{
           console.log("resList Earl",resList.length)
-          resList=resList.filter((rest)=>(rest.info.avgRating > 4)
+          let filteredRest=resList.filter((rest)=>(rest.info.avgRating > 4)
             // console.log("rest.info.avgRating",rest.info.avgRating)
             // console.log("rest.infoboolean",Boolean(rest.info.avgRating > 4))
 
           )
+
+
+          setRestArray(filteredRest)
 
           console.log("resList",resList.length)
 
@@ -807,7 +814,7 @@ const Body=()=>{
 
          <div className="res-container">
 
-          {resList.map((rest)=>(
+          {restArray.map((rest)=>(
            
             <RestaurantCard resData={rest.info} key={rest.info.id}/>
             // console.log('---------Rest------',rest)
