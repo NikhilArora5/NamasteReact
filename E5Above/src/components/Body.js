@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard"
 import { resList } from "../utils/mockData"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 // let resList=[
 //   {
@@ -788,7 +788,31 @@ import { useState } from "react"
 
 
 const Body=()=>{
+
+  useEffect(()=>{
+    console.log("---UseEffect Hook called-----------")
+  },[])
+
+  console.log("---Component Rendered-----------")
+
+  // 1. Destructure on the Fly  Basic Array Destructure
   const [restArray,setRestArray]=useState(resList)
+
+
+  // 2. Same array Destructur
+  const Arr=useState(resList)
+  // const [restArray,setRestArray]=Arr
+
+  // console.log("-------ARRAY---",Arr)
+
+  // 3.
+// const restArray=Arr[0]
+// const setRestArray=Arr[1]
+
+
+
+
+
     return (
         <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >
          <div className="search">Search</div>
