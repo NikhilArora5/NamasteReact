@@ -791,12 +791,23 @@ const Body=()=>{
 
   useEffect(()=>{
     console.log("---UseEffect Hook called-----------")
+    fetchData()
   },[])
+  const [restArray,setRestArray]=useState(resList)
 
   console.log("---Component Rendered-----------")
 
+  const fetchData=async()=>{
+     let data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.6425496&lng=76.8173359&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    // const data = await fetch(
+    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    // );
+      const json=await data.json()
+    console.log("Json--------------------",json)
+    }
+
   // 1. Destructure on the Fly  Basic Array Destructure
-  const [restArray,setRestArray]=useState(resList)
+ 
 
 
   // 2. Same array Destructur
