@@ -17,7 +17,9 @@ const Body=()=>{
 
 
   const [restArray,setRestArray]=useState([])
+  const [searchText,setSearchText]=useState("")
 
+  console.log("---------BODY RENDERED-----------")
   
 
   const fetchData=async()=>{
@@ -26,7 +28,6 @@ const Body=()=>{
     //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     // );
       const json=await data.json()
-    // console.log("Json--------------------",json)
     console.log("Json--------------------",json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     let listData=json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setRestArray(listData)
@@ -53,8 +54,8 @@ const Body=()=>{
 
     return restArray.length==0?<Shimmer/>:(
         <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >
-         <div className="search" >Search
-         <form
+         <div className="search" >
+         {/* <form
         
          >
           <input
@@ -64,7 +65,18 @@ const Body=()=>{
           />
           
           
-         </form>
+         </form> */}
+
+
+
+           <input
+          type="text"
+          placeholder="Search Restaurant"
+          onChange={(e)=>(    setSearchText(e.target.value))}
+          value={searchText}
+          />
+
+         <button  >Search</button>
          </div>
 
          <button className="filter-btn" 
