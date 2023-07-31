@@ -31,6 +31,14 @@
     padding: 0 20;
 }
 
+.login-Btn{
+    padding: 5px 10px;
+    margin: 0 2;
+    background-color: lightgray;
+}
+.login-Btn:hover{
+    cursor: pointer;
+}
 .search{
 
     padding: 20px;
