@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "start":"parcel index.html",
-    "build":"parcel build index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Nikhil Arora",
   "license": "ISC",
@@ -14,12 +14,14 @@
     "parcel": "^2.9.3"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.2",
     "parcel-bundler": "^1.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
- "browserslist":[
-"last 2  versions"
-
- ]
+  "browserslist": [
+    "last 2  versions"
+  ]
 }

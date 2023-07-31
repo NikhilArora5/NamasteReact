@@ -80,3 +80,23 @@
 .filter-btn:hover{
     cursor: pointer;
 }
+
+
+
+
+
+
+
+/* Shimmer container  */
+
+.shimmer-conatiner{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fake-resCard{
+    height: 300px;
+    width: 300px;
+    margin: 10px;
+    background-color: lightgray;
+}
