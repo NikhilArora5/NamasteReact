@@ -53,7 +53,19 @@ const Body=()=>{
 
     return restArray.length==0?<Shimmer/>:(
         <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >
-         <div className="search">Search</div>
+         <div className="search" >Search
+         <form
+        
+         >
+          <input
+          type="text"
+          placeholder="Search Restaurant"
+          onChange={(e)=>(console.log("e",e.target.value))}
+          />
+          
+          
+         </form>
+         </div>
 
          <button className="filter-btn" 
          
