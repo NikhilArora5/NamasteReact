@@ -4,7 +4,8 @@
     import Header from "./components/Header"
     import Body from "./components/Body"
 
-    import { createBrowserRouter } from "react-router-dom"
+    import { createBrowserRouter,RouterProvider} from "react-router-dom"
+    import About from "./components/About"
 
 
 const AppLayout=()=>{
@@ -18,8 +19,20 @@ const AppLayout=()=>{
     
 }
 
-const appRouter=createBrowserRouter()
+const appRouter=createBrowserRouter(
+    [
+        {
+             path:"/",
+             element:<AppLayout/>   
+    },
+        {
+             path:"/about",
+             element:<About/>   
+    },
+
+]
+)
 
 const root= ReactDOM.createRoot(document.getElementById("root"))
 
-root.render(<AppLayout/>)
+root.render(<RouterProvider router={appRouter}/>)
