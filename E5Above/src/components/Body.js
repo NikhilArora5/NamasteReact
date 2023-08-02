@@ -17,6 +17,7 @@ const Body=()=>{
 
 
   const [restArray,setRestArray]=useState([])
+  const [filteredRestData,setFilteredRestData]=useState([])
   const [searchText,setSearchText]=useState("")
 
   console.log("---------BODY RENDERED-----------")
@@ -28,9 +29,12 @@ const Body=()=>{
     //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     // );
       const json=await data.json()
-    console.log("Json--------------------",json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    let listData=json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    console.log("Json--------------------",json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    let listData=json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+   if(listData) {
     setRestArray(listData)
+    setFilteredRestData(listData)
+  }
 
     }
 
@@ -55,17 +59,7 @@ const Body=()=>{
     return restArray.length==0?<Shimmer/>:(
         <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >
          <div className="search" >
-         {/* <form
         
-         >
-          <input
-          type="text"
-          placeholder="Search Restaurant"
-          onChange={(e)=>(console.log("e",e.target.value))}
-          />
-          
-          
-         </form> */}
 
 
 
@@ -76,21 +70,26 @@ const Body=()=>{
           value={searchText}
           />
 
-         <button  >Search</button>
+         <button  onClick={()=>{
+          let filteredRest=restArray.filter((rest)=>(rest.info.name.toLowerCase().includes(searchText.toLowerCase())))
+          setFilteredRestData(filteredRest)
+
+         }} >Search</button>
          </div>
 
          <button className="filter-btn" 
          
          onClick={()=>{
           console.log("resList Earl",resList.length)
-          let filteredRest=resList.filter((rest)=>(rest.info.avgRating > 4)
+          let filteredRest=restArray.filter((rest)=>(rest.info.avgRating > 4)
             // console.log("rest.info.avgRating",rest.info.avgRating)
             // console.log("rest.infoboolean",Boolean(rest.info.avgRating > 4))
 
           )
 
 
-          setRestArray(filteredRest)
+          // setRestArray(filteredRest)
+          setFilteredRestData(filteredRest)
 
           console.log("resList",resList.length)
 
@@ -100,8 +99,8 @@ const Body=()=>{
 
          <div className="res-container">
 
-          {restArray.map((rest)=>(
-           
+          {filteredRestData.map((rest)=>(
+          //  console.log("------rest------",rest)
             <RestaurantCard resData={rest.info} key={rest.info.id}/>
             // console.log('---------Rest------',rest)
           )
