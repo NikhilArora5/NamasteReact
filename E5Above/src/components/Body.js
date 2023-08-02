@@ -13,6 +13,8 @@ const Body=()=>{
     fetchData()
 
 
+
+
   },[])
 
 
@@ -20,7 +22,7 @@ const Body=()=>{
   const [filteredRestData,setFilteredRestData]=useState([])
   const [searchText,setSearchText]=useState("")
 
-  console.log("---------BODY RENDERED-----------")
+  // console.log("---------BODY RENDERED-----------")
   
 
   const fetchData=async()=>{
@@ -29,8 +31,8 @@ const Body=()=>{
     //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     // );
       const json=await data.json()
-    console.log("Json--------------------",json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    let listData=json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // console.log("Json--------------------",json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    let listData=json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
    if(listData) {
     setRestArray(listData)
     setFilteredRestData(listData)
@@ -71,7 +73,9 @@ const Body=()=>{
           />
 
          <button  onClick={()=>{
+
           let filteredRest=restArray.filter((rest)=>(rest.info.name.toLowerCase().includes(searchText.toLowerCase())))
+
           setFilteredRestData(filteredRest)
 
          }} >Search</button>
