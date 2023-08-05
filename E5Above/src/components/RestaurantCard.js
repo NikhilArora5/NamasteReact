@@ -1,5 +1,5 @@
 import {CDN_URL} from "../utils/constants"
-
+import { Link } from "react-router-dom"
 
 
 const RestaurantCard=(props)=>{
@@ -7,7 +7,7 @@ const RestaurantCard=(props)=>{
     // console.log("Props-------------",props)
     const {resData}=props
         return (
-        <div className="res-card">
+        <div className="res-card"  > 
             <img 
             className="res-logo"
             alt="res-logo"
