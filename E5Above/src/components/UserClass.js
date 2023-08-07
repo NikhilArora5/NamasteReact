@@ -7,14 +7,16 @@ class UserClass extends React.Component{
 
         super(props)
 
-        // console.log("Receiving Props in classBased",props)
+       
         this.state={
             count:0
         }
+
+         console.log("Child Contructour called")
     }
 
     render(){
-
+         console.log("Child Rendering  called")
         const {count}=this.state
 
         return (
