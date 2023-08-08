@@ -8,16 +8,21 @@ class About extends Component{
 
     super(props)
 
-    console.log("Parent Contructour called")
+    // console.log("Parent Contructour called")
   }
+  
+  componentDidMount(){
+
+    // console.log("Parent component Did Mount")
+}
 
   render(){
-    console.log("Parent Rendering  called")
+    // console.log("Parent Rendering  called")
     return (
       <div>
         <h1>About class comp Page...............</h1>
   
-      <UserClass name={"Nikhil Arora As Props"} />
+      <UserClass name={"First "} />
       </div>
     )
   }
