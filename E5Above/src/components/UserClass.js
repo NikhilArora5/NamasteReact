@@ -27,6 +27,10 @@ class UserClass extends React.Component{
         // console.log("JSON USER API",json)
 
         if(json) this.setState({userInfo:json})
+
+        this.timer=setInterval(()=>{
+            console.log(" user comp Interval ")
+        },1000)
     }
    
 
@@ -37,6 +41,13 @@ class UserClass extends React.Component{
         }
         console.log(" component Did update called")
     }
+
+  async  componentWillUnmount(){
+
+        console.log("User  comp will unmount")
+        clearInterval(this.timer)
+    }
+
     render(){
         //  console.log(this.props.name+"Child Rendering  called")
         const {avatar_url,login,html_url}=this.state.userInfo
