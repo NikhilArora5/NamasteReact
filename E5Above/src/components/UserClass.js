@@ -10,7 +10,7 @@ class UserClass extends React.Component{
        
         this.state={
             userInfo:{
-                login:"",
+                login:"Dummy Name",
                 avatar_url:""
             }
         }
@@ -20,7 +20,7 @@ class UserClass extends React.Component{
 
    async componentDidMount(){
 
-        console.log(" component Did Mount")
+        console.log(" component Did Mount ---------Api hits we get Data and we update state")
         const data= await fetch(" https://api.github.com/users/NikhilArora5")
 
         let json=await data.json()
@@ -30,16 +30,20 @@ class UserClass extends React.Component{
     }
    
 
-    async componentDidUpdate(){
+    async componentDidUpdate(prevProps,prevState){
+        if(this.state.userInfo!==prevState.userInfo){
+
+            
+        }
         console.log(" component Did update called")
     }
     render(){
         //  console.log(this.props.name+"Child Rendering  called")
         const {avatar_url,login,html_url}=this.state.userInfo
         if(!login){
-              console.log("Rendering  called with Dummy Data State>>>",this.state.userInfo)
+              console.log("component Rendering  called with Dummy Data State>>>",this.state.userInfo)
         }else{
-            console.log("Rendering  called with Updated Data State>>>",this.state.userInfo)
+            console.log("component Rendering  called with Updated Data State>>>",this.state.userInfo)
         }
 
         return (
