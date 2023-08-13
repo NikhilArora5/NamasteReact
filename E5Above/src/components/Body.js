@@ -3,6 +3,7 @@ import { resList } from "../utils/mockData"
 import { useEffect, useState } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
+import useOnlineStaus from "../utils/customHooks/useOnlineStatus"
 
 
 
@@ -58,6 +59,14 @@ const Body=()=>{
 
 
 // THIS IS KNOWN AS CONDITIONAL REDERING
+
+
+const onlineStatus=useOnlineStaus()
+
+if(!onlineStatus){
+
+  return <h1>Looks like you are offline please internet connection !!</h1>
+}
 
     return restArray.length==0?<Shimmer/>:(
         <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >

@@ -3,35 +3,16 @@ import { useEffect,useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { MENU_API } from '../utils/constants'
 import Shimmer from './Shimmer'
+
+import useRestMenu from '../utils/customHooks/useRestMenu'
 const RestaurantMenu = () => {
-  let {resId} =useParams()
-  // const [itemCards,setResMenu]=useState([])
-  const [resInfo,setResInfo]=useState([])
-  // console.log("------resId---",resId)
+  let {resId} =useParams() 
+  
+  // getting resINfo from custom HOOK
+  let resInfo=useRestMenu(resId)
 
-  useEffect(()=>{
-   fetchMenu()
-  },[])
+  
 
-  const fetchMenu=async()=>{
-    let data=await fetch(MENU_API+resId)
-    let json=await data.json()
-
-    // console.log("-------------RES-MENU API JSON-----",json?.data?.cards[2]?.groupedCard?.cardGroupMap)
-
-    
-
-    if(json.data){
-      
-      setResInfo(json.data)
-    
-      console.log('------TOTAL DATA-------------',resInfo)
-     
-     
-    }
-   
-   
-  }
 
   if (resInfo==null || resInfo.length==0) return <Shimmer></Shimmer>
   console.log("resInfo",resInfo)
