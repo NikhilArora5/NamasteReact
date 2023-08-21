@@ -4,6 +4,10 @@ import { useEffect, useState } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
 import useOnlineStaus from "../utils/customHooks/useOnlineStatus"
+import RestaurantCardPromoted from "./RestaurantCardPromoted"
+
+let RestaurantCardPromoted2=RestaurantCardPromoted(RestaurantCard)
+
 
 
 
@@ -24,14 +28,11 @@ const Body=()=>{
   const [filteredRestData,setFilteredRestData]=useState([])
   const [searchText,setSearchText]=useState("")
 
-  // console.log("---------BODY RENDERED-----------")
+
   
 
   const fetchData=async()=>{
      let data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.6790976&lng=76.84398709999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    // const data = await fetch(
-    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    // );
       const json=await data.json()
     console.log("Json--------------------",json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     let listData=json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -42,20 +43,10 @@ const Body=()=>{
 
     }
 
-  // 1. Destructure on the Fly  Basic Array Destructure
- 
 
 
-  // 2. Same array Destructur
   const Arr=useState(resList)
-  // const [restArray,setRestArray]=Arr
-
-  // console.log("-------ARRAY---",Arr)
-
-  // 3.
-// const restArray=Arr[0]
-// const setRestArray=Arr[1]
-
+ 
 
 
 // THIS IS KNOWN AS CONDITIONAL REDERING
@@ -95,11 +86,7 @@ if(!onlineStatus){
          
          onClick={()=>{
           console.log("resList Earl",resList.length)
-          let filteredRest=restArray.filter((rest)=>(rest.info.avgRating > 4)
-            // console.log("rest.info.avgRating",rest.info.avgRating)
-            // console.log("rest.infoboolean",Boolean(rest.info.avgRating > 4))
-
-          )
+          let filteredRest=restArray.filter((rest)=>(rest.info.avgRating > 4) )
 
 
           // setRestArray(filteredRest)
@@ -114,9 +101,17 @@ if(!onlineStatus){
          <div className="res-container">
 
           {filteredRestData.map((rest)=>(
-          //  console.log("------rest------",rest)
-           <Link to={`/restaurants/${rest.info.id}`} key={rest.info.id}> <RestaurantCard resData={rest.info} /> </Link> 
-            // console.log('---------Rest------',rest)
+            
+           <Link to={`/restaurants/${rest.info.id}`} key={rest.info.id}> 
+
+           
+           {rest.info.veg?   <RestaurantCardPromoted2  resData={rest.info} />: <RestaurantCard resData={rest.info} /> }
+        
+          
+
+
+            </Link> 
+           
           )
           
           )}

@@ -25,4 +25,21 @@ const RestaurantCard=(props)=>{
     )
 }
 
+
+
+
+
+export const RestaurantCardPromoted=(RestaurantCard)=>(
+
+     ()=>{
+
+            return(
+
+                <RestaurantCard></RestaurantCard>
+            )
+    }
+
+
+)
+
 export default RestaurantCard
