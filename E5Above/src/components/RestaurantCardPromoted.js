@@ -7,11 +7,14 @@ const RestaurantCardPromoted=(RestaurantCard)=>(
     (props)=>{
 
            return(
-            <>
-
-                <label>100% Veg</label>
-               <RestaurantCard {...props}></RestaurantCard>            
-            </>
+            
+           <> 
+          <label>100% Veg</label>
+           <RestaurantCardPromoted {...props}></RestaurantCardPromoted> 
+      </>
+               
+                           
+            
             
            )
    }

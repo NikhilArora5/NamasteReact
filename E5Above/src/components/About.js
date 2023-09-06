@@ -21,10 +21,10 @@ class About extends Component{
     // console.log("Parent Rendering  called")
     return (
       <div>
-        <h1>AboutCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCaaaaaaaaaaaaaaa class comp Page...........kkkkkkkk...</h1>
+        {/* <h1>AboutCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCaaaaaaaaaaaaaaa class comp Page...........kkkkkkkk...</h1> */}
   
-      {/* <UserClass name={"First "} /> */}
-      <UserFunc/>
+      <UserClass name={"First "} />
+      {/* <UserFunc/> */}
       </div>
     )
   }

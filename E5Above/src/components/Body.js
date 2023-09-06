@@ -60,7 +60,7 @@ if(!onlineStatus){
 }
 
     return restArray.length==0?<Shimmer/>:(
-        <div className="body"style={   { backgroundColor: "#f0f0f0f"}  } >
+        <div className="body bg-[#F5F5F5]"  >
          <div className="search" >
         
 
@@ -98,7 +98,7 @@ if(!onlineStatus){
          }} >
           Top Rated Restaurants</button>
 
-         <div className="res-container">
+         <div className="res-container flex flex-wrap items-center ">
 
           {filteredRestData.map((rest)=>(
             
