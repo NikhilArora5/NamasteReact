@@ -9,8 +9,8 @@ const RestaurantCardPromoted=(RestaurantCard)=>(
            return(
             
            <> 
-          <label>100% Veg</label>
-           <RestaurantCardPromoted {...props}></RestaurantCardPromoted> 
+          <label  className="text-white bg-gray-500 rounded-md py-1 px-2 absolute m-0 ml-8 mt-4">100% Veg</label>
+           <RestaurantCard {...props}></RestaurantCard> 
       </>
                
                            

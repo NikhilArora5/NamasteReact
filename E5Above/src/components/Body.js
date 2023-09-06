@@ -8,7 +8,8 @@ import RestaurantCardPromoted from "./RestaurantCardPromoted"
 
 let RestaurantCardPromoted2=RestaurantCardPromoted(RestaurantCard)
 
-
+// let spacing="mx-6 "
+let btn="bg-green-200 py-2 px-4 rounded-md cursor-pointer"
 
 
 
@@ -61,28 +62,29 @@ if(!onlineStatus){
 
     return restArray.length==0?<Shimmer/>:(
         <div className="body bg-[#F5F5F5]"  >
-         <div className="search" >
+         <div className="ml-6 flex  items-center py-4" >
         
 
 
 
-           <input
+           <input className="mx-4 p-2"
           type="text"
           placeholder="Search Restaurant"
           onChange={(e)=>(    setSearchText(e.target.value))}
           value={searchText}
           />
 
-         <button  onClick={()=>{
+         <button className="bg-blue-300 py-2 px-4 rounded-md cursor-pointer mx-2" onClick={()=>{
 
           let filteredRest=restArray.filter((rest)=>(rest.info.name.toLowerCase().includes(searchText.toLowerCase())))
 
           setFilteredRestData(filteredRest)
 
          }} >Search</button>
-         </div>
 
-         <button className="filter-btn" 
+      <button 
+      // className={spacing}
+      className="bg-green-200 py-2 px-4 rounded-md cursor-pointer mx-2"
          
          onClick={()=>{
           console.log("resList Earl",resList.length)
@@ -97,6 +99,9 @@ if(!onlineStatus){
           
          }} >
           Top Rated Restaurants</button>
+         </div>
+
+        
 
          <div className="res-container flex flex-wrap items-center ">
 
