@@ -67,14 +67,14 @@ if(!onlineStatus){
 
 
 
-           <input className="mx-4 p-2"
+           <input className="ml-4 p-2"
           type="text"
           placeholder="Search Restaurant"
           onChange={(e)=>(    setSearchText(e.target.value))}
           value={searchText}
           />
 
-         <button className="bg-blue-300 py-2 px-4 rounded-md cursor-pointer mx-2" onClick={()=>{
+         <button className="bg-blue-300 p-2 px-4 rounded-md cursor-pointer " onClick={()=>{
 
           let filteredRest=restArray.filter((rest)=>(rest.info.name.toLowerCase().includes(searchText.toLowerCase())))
 
@@ -84,7 +84,7 @@ if(!onlineStatus){
 
       <button 
       // className={spacing}
-      className="bg-green-200 py-2 px-4 rounded-md cursor-pointer mx-2"
+      className="bg-green-200 p-2 px-4 rounded-md cursor-pointer mx-2"
          
          onClick={()=>{
           console.log("resList Earl",resList.length)
