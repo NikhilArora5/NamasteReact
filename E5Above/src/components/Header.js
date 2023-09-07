@@ -11,19 +11,19 @@ let li="mx-4"
 const Header=()=>{
     const [loginBtn,setLoginBtn]=useState("Login")
     useEffect(()=>{
-        console.log("----useffect called after header------------")
+        // console.log("----useffect called after header------------")
     },[loginBtn])
 
     
 
     const onlineStatus=useOnlineStaus()
-    console.log("-------Header Component Rendered--------")
+    // console.log("-------Header Component Rendered--------")
     return ( 
     
-    <div className="header flex bg-pink-50 p-8 items-start justify-between">
+    <div className="header flex bg-pink-50 px-8 py-6 items-start justify-between">
   
       <div className="logo-container flex items-center justify-evenly">
-      <img className="logo w-[250px] rounded-lg" src= {LOGO_URL}/>
+      <img className="logo w-[150px] rounded-lg" src= {LOGO_URL}/>
       </div>
   
       <div className="nav-items text-lg mt-4">
