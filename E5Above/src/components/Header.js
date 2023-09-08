@@ -3,19 +3,25 @@ import { useState ,useEffect} from "react"
 import { Link } from "react-router-dom"
 import useOnlineStaus from "../utils/customHooks/useOnlineStatus"
 
-// common classes
+import userContext from "../utils/context/userContext"
 
+import { useContext } from "react"
+
+
+// common classes
 let li="mx-4"
 
 
 const Header=()=>{
     const [loginBtn,setLoginBtn]=useState("Login")
-    useEffect(()=>{
-        // console.log("----useffect called after header------------")
-    },[loginBtn])
 
-    
+   const {loggedInUser}=useContext(userContext)
+console.log("---------loggedinUSer---",loggedInUser)
 
+
+useEffect(()=>{
+  // console.log("----useffect called after header------------")
+},[loginBtn])
     const onlineStatus=useOnlineStaus()
     // console.log("-------Header Component Rendered--------")
     return ( 
@@ -36,7 +42,8 @@ const Header=()=>{
               <li className={li}> <Link to={"/contact"}>Contact</Link> </li>
               <li className={li}> <Link to={"/grocery"}>Grocery</Link> </li>
            
-              <li> Cart</li>
+              <li  className={li}> Cart</li>
+              <li  className={li}>{loggedInUser}</li>
               <button className="login-Btn" 
               onClick={()=>(loginBtn=="Login"?setLoginBtn("Logout"):setLoginBtn("Login"))}>
                 
