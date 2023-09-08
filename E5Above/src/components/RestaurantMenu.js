@@ -43,7 +43,7 @@ const RestaurantMenu = () => {
 
           return  <div>
 
-                <RestaurantCategory data={category?.card?.card} ></RestaurantCategory>
+                <RestaurantCategory key={category?.card?.card.title} data={category?.card?.card} showItems={false} ></RestaurantCategory>
 
           </div>
         })}

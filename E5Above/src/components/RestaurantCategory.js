@@ -6,12 +6,11 @@ function RestaurantCategory(props){
 
     console.log("-props",props)
 
-    const [showItems,setShowItems]=useState(false)
+  
     const handleAccorion=()=>{
-      setShowItems(!showItems)
-      console.log("satet",showItems)
+     
     }
-    let {data}=props
+    let {data,showItems}=props
     return <>
         <div className="mt-2 w-1/2  mx-auto bg-gray-50 flex flex-col justify-between p-4 my-4 shadow-lg cursor-pointer">
           <div className="flex justify-between mb-2" onClick={handleAccorion}>

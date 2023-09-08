@@ -35,8 +35,9 @@ const Body=()=>{
   const fetchData=async()=>{
      let data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.6790976&lng=76.84398709999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
       const json=await data.json()
-    console.log("Json--------------------",json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    let listData=json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      console.log("----------Response---",json?.data?.cards.length)
+    console.log("Json--------------------",json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    let listData=json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
    if(listData) {
     setRestArray(listData)
     setFilteredRestData(listData)
