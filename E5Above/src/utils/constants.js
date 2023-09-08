@@ -8,7 +8,7 @@ export const LOGO_URL ="https://www.logodesign.net/logo/smoking-burger-with-lett
 export const MENU_API="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.6790976&lng=76.84398709999999&restaurantId="
 
 
-export default CDN_URL
+
 
 
 
