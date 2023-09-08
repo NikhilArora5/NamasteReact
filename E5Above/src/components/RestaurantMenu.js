@@ -12,7 +12,9 @@ const RestaurantMenu = () => {
   // getting resINfo from custom HOOK
   let resInfo=useRestMenu(resId)
 
-  
+  const [showIndex,setShowIndex]=useState(0)
+
+  console.log('------------showIndexStat',showIndex)
 
 
   if (resInfo==null || resInfo.length==0) return <Shimmer></Shimmer>
@@ -39,11 +41,26 @@ const RestaurantMenu = () => {
         <h1 className='text-2xl font-bold mt-6 mb-4 '>{name}</h1>
         <h3 className='text-lg font-bold text-gray-600'> Cost For Two RS:{costForTwo/100}</h3>
 
-        {categories.map((category)=>{
+        {categories.map((category,index)=>{
 
           return  <div>
 
-                <RestaurantCategory key={category?.card?.card.title} data={category?.card?.card} showItems={false} ></RestaurantCategory>
+                <RestaurantCategory 
+                key={category?.card?.card.title} 
+                data={category?.card?.card} 
+                
+                showItems={index==showIndex?true:false} 
+
+                setShowIndex={(index)=>setShowIndex(index)}
+
+                showIndex={showIndex}
+
+                currentIndex={index}
+                
+                >
+
+
+                </RestaurantCategory>
 
           </div>
         })}
