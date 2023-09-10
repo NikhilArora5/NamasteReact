@@ -1,11 +1,11 @@
 import RestaurantCard from "./RestaurantCard"
 import { resList } from "../utils/mockData"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
 import useOnlineStaus from "../utils/customHooks/useOnlineStatus"
 import RestaurantCardPromoted from "./RestaurantCardPromoted"
-
+import userContext from "../utils/context/userContext"
 let RestaurantCardPromoted2=RestaurantCardPromoted(RestaurantCard)
 
 // let spacing="mx-6 "
@@ -18,9 +18,6 @@ const Body=()=>{
   useEffect(()=>{
    
     fetchData()
-
-
-
 
   },[])
 
@@ -36,7 +33,8 @@ const Body=()=>{
      let data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.6790976&lng=76.84398709999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
       const json=await data.json()
       console.log("----------Response---",json?.data?.cards.length)
-    // console.log("Json--------------------",json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      // console.log("----------Response---",json?.data?.cards[2])
+    console.log("Json--------------------",json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     let listData=json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
    if(listData) {
     setRestArray(listData)
@@ -44,6 +42,9 @@ const Body=()=>{
   }
 
     }
+
+
+   const {loggedInUser,setUserName}=useContext(userContext) 
 
 
 
@@ -102,7 +103,17 @@ if(!onlineStatus){
           Top Rated Restaurants</button>
          </div>
 
-        
+
+
+         <input className="ml-4 p-2"
+          type="text"
+          placeholder="Context Name"
+          onChange={(e)=>(   setUserName(e.target.value) )}
+          value={loggedInUser}
+          />
+
+
+
 
          <div className="res-container flex flex-wrap items-center ">
 

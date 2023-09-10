@@ -1,5 +1,5 @@
 import React from "react"
-
+import userContext from "../utils/context/userContext"
 
 class UserClass extends React.Component{
 
@@ -15,7 +15,7 @@ class UserClass extends React.Component{
             }
         }
 
-         console.log( "Contructour called")
+        //  console.log( "Contructour called")
     }
 
    async componentDidMount(){
@@ -29,7 +29,7 @@ class UserClass extends React.Component{
         if(json) this.setState({userInfo:json})
 
         this.timer=setInterval(()=>{
-            console.log(" user comp Interval ")
+            // console.log(" user comp Interval ")
         },1000)
     }
    
@@ -39,12 +39,12 @@ class UserClass extends React.Component{
 
             
         }
-        console.log(" component Did update called")
+        // console.log(" component Did update called")
     }
 
   async  componentWillUnmount(){
 
-        console.log("User  comp will unmount")
+        // console.log("User  comp will unmount")
         clearInterval(this.timer)
     }
 
@@ -52,9 +52,9 @@ class UserClass extends React.Component{
         //  console.log(this.props.name+"Child Rendering  called")
         const {avatar_url,login,html_url}=this.state.userInfo
         if(!login){
-              console.log("component Rendering  called with Dummy Data State>>>",this.state.userInfo)
+            //   console.log("component Rendering  called with Dummy Data State>>>",this.state.userInfo)
         }else{
-            console.log("component Rendering  called with Updated Data State>>>",this.state.userInfo)
+            // console.log("component Rendering  called with Updated Data State>>>",this.state.userInfo)
         }
 
         return (
@@ -63,6 +63,17 @@ class UserClass extends React.Component{
               {/* <img src={avatar_url}/> */}
                 <h2>{login}</h2>
                 <a target="_blank" href={html_url} > Github  </a>
+
+
+                <userContext.Consumer>
+
+                    {(contextData)=>(
+                        
+                        console.log("--------context Data",contextData)
+
+                        
+                    )}
+                </userContext.Consumer>
 
                 
                
