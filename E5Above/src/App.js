@@ -9,10 +9,12 @@
     import Contact from "./components/Contact"
     import Error from "./components/Error"
     import RestaurantMenu from "./components/RestaurantMenu"
- import Login from "./components/Login"
-const Grocery=lazy(()=>import("./components/Grocery"))
+    import Login from "./components/Login"
+    import userContext from "./utils/context/userContext"
+    import { Provider } from "react-redux"
+    import store from "./Redux/store"
 
-import userContext from "./utils/context/userContext"
+    const Grocery=lazy(()=>import("./components/Grocery"))
 
 
 
@@ -27,15 +29,19 @@ const AppLayout=()=>{
     },[])
 
     return (
+        <Provider store={store}>
 
-        <userContext.Provider value={{loggedInUser:userName,setUserName}}>
+                <userContext.Provider value={{loggedInUser:userName,setUserName}}>
 
-          <div className="root">
-            <Header/>
-       `<Outlet></Outlet>`
+                <div className="root">
+                <Header/>
+                `<Outlet></Outlet>`
 
-        </div>
-        </userContext.Provider>
+                </div>
+                </userContext.Provider>
+
+        </Provider>
+        
     )
       
     
