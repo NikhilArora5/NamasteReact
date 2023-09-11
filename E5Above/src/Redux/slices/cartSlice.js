@@ -1,22 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice ,current} from "@reduxjs/toolkit";
 
-const cartSlice=createSlice({
+export const cartSlice=createSlice({
     name:"cart",
     initialState:{
         items:[]
     },
     reducers:{
         addItem:(state,action)=>{
-
+           
+            console.log("------------STATE SIMPLE",state)
+            console.log("---------CUREENT---STATE ",current(state))
+            // RTK
             state.items.push(action.payload)
         },
         removeItem:(state,action)=>{
             // removing the last but can make logic according to index
             state.items.pop()
         },
-        clearCart:(state,action)=>{
 
-            state.items.length=0
+        // for Ex: original state ={items:["pizza"]}
+        clearCart:(state,action)=>{           
+
+            return {items:[]}
+
         }
     }
 })
@@ -29,3 +35,5 @@ export const{addItem,removeItem,clearCart}=cartSlice.actions
 
 // exporting reducer as default
 export default cartSlice.reducer
+
+

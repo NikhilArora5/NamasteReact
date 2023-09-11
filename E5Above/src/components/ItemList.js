@@ -1,11 +1,23 @@
 import React from 'react'
-
 import { CDN_URL } from '../utils/constants'
 
+import { useDispatch } from 'react-redux'
+import { cartSliceActions } from '../Redux/slices/cartSlice'
+
+
+let {addItem,removeItem,clearCart}=cartSliceActions
+
 const ItemList = (props) => {
-    // console.log("--------Props ITEMlist",props)
-    let {item}=props
-    console.log("-------item--",item)
+  let {item}=props
+  
+  let dispatch=useDispatch()
+
+   const   handleAddItem=(item)=>{
+      console.log("-Item in add--------",item)
+      dispatch(addItem(item))
+   }
+
+
   return (
     <div className='text-left m-2 border-b-2 border-gray-300 py-6 flex justify-between'>
         <div className='w-10/12 flex  flex-col justify-between my-2 '>
@@ -23,6 +35,11 @@ const ItemList = (props) => {
        
  
         <div className='w-2/12'>
+          <button className='absolute bg-black text-white p-2 text-sm rounded-md'
+            // onClick={handleAddItem}
+            // onClick={handleAddItem(item)}
+            onClick={()=>(handleAddItem(item.card.info))}
+          >  Add +</button>
         <img className=' rounded-md' src={CDN_URL+item?.card?.info.imageId} alt={item?.card?.info.name+" image"}/>
         </div>
       

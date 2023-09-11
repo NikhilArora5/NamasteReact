@@ -6,17 +6,19 @@ import useOnlineStaus from "../utils/customHooks/useOnlineStatus"
 import userContext from "../utils/context/userContext"
 
 import { useContext } from "react"
-
-
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector"
 // common classes
 let li="mx-4"
 
 
 const Header=()=>{
     const [loginBtn,setLoginBtn]=useState("Login")
+    const {loggedInUser}=useContext(userContext)
 
-   const {loggedInUser}=useContext(userContext)
-console.log("---------loggedinUSer---",loggedInUser)
+    const cartItems=useSelector((store)=>(store.cart.items))
+
+    
+
 
 
 useEffect(()=>{
@@ -42,7 +44,7 @@ useEffect(()=>{
               <li className={li}> <Link to={"/contact"}>Contact</Link> </li>
               <li className={li}> <Link to={"/grocery"}>Grocery</Link> </li>
            
-              <li  className={li}> Cart</li>
+              <li  className= "font-bold"> Cart({cartItems.length})</li>
               <li  className={li}>{loggedInUser}</li>
               <button className="login-Btn" 
               onClick={()=>(loginBtn=="Login"?setLoginBtn("Logout"):setLoginBtn("Login"))}>
