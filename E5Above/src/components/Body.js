@@ -35,7 +35,7 @@ const Body=()=>{
       console.log("----------Response---",json?.data?.cards.length)
       // console.log("----------Response---",json?.data?.cards[2])
     console.log("Json--------------------",json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    let listData=json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    let listData=json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
    if(listData) {
     setRestArray(listData)
     setFilteredRestData(listData)
