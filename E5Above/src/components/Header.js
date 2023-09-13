@@ -8,13 +8,20 @@ import userContext from "../utils/context/userContext"
 import { useContext } from "react"
 import {  useSelector } from "react-redux/es/hooks/useSelector"
 import { userLogout } from "../Api/auth"
+import { useNavigate } from "react-router-dom"
+import { clearCart } from "../Redux/slices/cartSlice"
+import { useDispatch } from "react-redux"
+
 // common classes
 let li="mx-4"
 
 
 const Header=()=>{
+  let dispatch=useDispatch()
+  let navigate=useNavigate()
+
     const [loginBtn,setLoginBtn]=useState("Login")
-    const {loggedInUser,isLoggedIn,setIsLoggedIn}=useContext(userContext)
+    const {loggedInUser,isLoggedIn,setIsLoggedIn,}=useContext(userContext)
 
     const cartItems=useSelector((store)=>(store.cart.items))
 
@@ -30,7 +37,21 @@ useEffect(()=>{
 
     const onlineStatus=useOnlineStaus()
     const auth=async()=>{
-        let userLogout()
+        let resData=await userLogout  ()
+        console.log("----------Logout 2222---",resData)
+        console.log("status--",resData.status)
+      if(resData.status==200){
+
+        console.log("updating after logout")
+
+        navigate("/login")
+        dispatch(clearCart())
+        setIsLoggedIn(false)
+        
+      }
+        
+
+
     }
     return ( 
     
@@ -45,16 +66,16 @@ useEffect(()=>{
 
             <li>Online Status :{onlineStatus?"✔️":"🔴"}</li>
               <li className={li}><Link to={"/"} >Home</Link> </li>
-              <li className={li}>  Restaurants  </li>
+              {/* <li className={li}>  Restaurants  </li> */}
               <li className={li}> <Link to={"/about"}>About us</Link> </li>
               <li className={li}> <Link to={"/contact"}>Contact</Link> </li>
-              <li className={li}> <Link to={"/grocery"}>Grocery</Link> </li>
+              {/* <li className={li}> <Link to={"/grocery"}>Grocery</Link> </li> */}
            
-              <li  className= "font-bold">  <Link to={"/cart"}>Cart({cartItems.length})</Link></li>
+              <li  className= "font-bold mx-1">  <Link to={"/cart"}>Cart({cartItems.length})</Link></li>
               {isLoggedIn?<li  className={li}>{loggedInUser}</li>:""}
               <button className="login-Btn" 
-              onClick={()=>(setIsLoggedIn(!isLo))}>
-                <Link to={"/login"}> {isLoggedIn?"Logout":"Login"}</Link>
+              onClick={()=>(isLoggedIn?auth():null)}>
+                <Link to={isLoggedIn?"/":"/login"}> {isLoggedIn?"Logout":"Login"}</Link>
                
                 
                 </button>
