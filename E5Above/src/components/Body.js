@@ -6,7 +6,9 @@ import { Link } from "react-router-dom"
 import useOnlineStaus from "../utils/customHooks/useOnlineStatus"
 import RestaurantCardPromoted from "./RestaurantCardPromoted"
 import userContext from "../utils/context/userContext"
+
 let RestaurantCardPromoted2=RestaurantCardPromoted(RestaurantCard)
+
 
 // let spacing="mx-6 "
 let btn="bg-green-200 py-2 px-4 rounded-md cursor-pointer"
@@ -35,7 +37,7 @@ const Body=()=>{
       console.log("----------Response---",json?.data?.cards.length)
       // console.log("----------Response---",json?.data?.cards[2])
     console.log("Json--------------------",json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    let listData=json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    let listData=json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
    if(listData) {
     setRestArray(listData)
     setFilteredRestData(listData)

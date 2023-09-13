@@ -6,14 +6,15 @@ import useOnlineStaus from "../utils/customHooks/useOnlineStatus"
 import userContext from "../utils/context/userContext"
 
 import { useContext } from "react"
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector"
+import {  useSelector } from "react-redux/es/hooks/useSelector"
+import { userLogout } from "../Api/auth"
 // common classes
 let li="mx-4"
 
 
 const Header=()=>{
     const [loginBtn,setLoginBtn]=useState("Login")
-    const {loggedInUser}=useContext(userContext)
+    const {loggedInUser,isLoggedIn,setIsLoggedIn}=useContext(userContext)
 
     const cartItems=useSelector((store)=>(store.cart.items))
 
@@ -24,8 +25,13 @@ const Header=()=>{
 useEffect(()=>{
   // console.log("----useffect called after header------------")
 },[loginBtn])
+
+
+
     const onlineStatus=useOnlineStaus()
-    // console.log("-------Header Component Rendered--------")
+    const auth=async()=>{
+        let userLogout()
+    }
     return ( 
     
     <div className="header flex bg-pink-50 px-8 py-6 items-start justify-between">
@@ -44,12 +50,12 @@ useEffect(()=>{
               <li className={li}> <Link to={"/contact"}>Contact</Link> </li>
               <li className={li}> <Link to={"/grocery"}>Grocery</Link> </li>
            
-              <li  className= "font-bold"> Cart({cartItems.length})</li>
-              <li  className={li}>{loggedInUser}</li>
+              <li  className= "font-bold">  <Link to={"/cart"}>Cart({cartItems.length})</Link></li>
+              {isLoggedIn?<li  className={li}>{loggedInUser}</li>:""}
               <button className="login-Btn" 
-              onClick={()=>(loginBtn=="Login"?setLoginBtn("Logout"):setLoginBtn("Login"))}>
-                
-                {loginBtn}
+              onClick={()=>(setIsLoggedIn(!isLo))}>
+                <Link to={"/login"}> {isLoggedIn?"Logout":"Login"}</Link>
+               
                 
                 </button>
           </ul>

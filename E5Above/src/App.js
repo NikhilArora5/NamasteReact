@@ -13,6 +13,7 @@
     import userContext from "./utils/context/userContext"
     import { Provider } from "react-redux"
     import store from "./Redux/store"
+    import Cart from "./components/Cart"
 
     const Grocery=lazy(()=>import("./components/Grocery"))
 
@@ -21,6 +22,7 @@
 
 const AppLayout=()=>{
     const [userName,setUserName]=useState("")
+    const [isLoggedIn,setIsLoggedIn]=useState(false)
     
     useEffect(()=>{
         // initialing hitting an api and getting user data
@@ -31,7 +33,7 @@ const AppLayout=()=>{
     return (
         <Provider store={store}>
 
-                <userContext.Provider value={{loggedInUser:userName,setUserName}}>
+                <userContext.Provider value={{loggedInUser:userName,setUserName,isLoggedIn:isLoggedIn,setIsLoggedIn}}>
 
                 <div className="root">
                 <Header/>
@@ -80,7 +82,10 @@ const appRouter=createBrowserRouter(
                     element:<Suspense fallback={
                          <h1>Grocery Page</h1>
                     } ><Grocery/></Suspense>
-           },
+           },{
+            path:"/cart",
+            element:<Cart></Cart>
+   },
 
 
              ],

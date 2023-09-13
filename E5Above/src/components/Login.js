@@ -1,21 +1,36 @@
 import React from 'react'
 import { useState } from 'react'
-
+import { userLogin } from '../Api/auth'
+import { Navigate, useNavigate } from 'react-router-dom'
+import userContext from '../utils/context/userContext'
+import { useContext } from 'react'
 const Login = () => {
+    let navigate=useNavigate()
     const [email,SetEmail]=useState("")
     const [password,SetPasword]=useState("")
     const [data,setData]=useState({})
+    let {loggedInUser,setUserName,setIsLoggedIn}=useContext(userContext)
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         // console.log("=========e",e)
-        setData({...data,[e.target.name]:e.target.value})
+        // setData({...data,[e.target.name]:e.target.value})
+        e.preventDefault();
+        // userLogin(data)
+        let resData= await userLogin(data)
+        console.log("resData",resData)
 
-        console.log("data",data)
+        if(resData.status=200){
+            setUserName(resData.data.name)
+            setIsLoggedIn(true)
+            navigate("/")
+
+        }
 
     }
 
     const handleChange=(e)=>{
-        setData({[e.target.name]:e.target.value})
+       
+        setData({...data,[e.target.name]:e.target.value})
 
         console.log("data",data)
     }
@@ -26,7 +41,7 @@ const Login = () => {
     <div>
      
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <a className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"/>
           Food Cafe   
       </a>
@@ -35,7 +50,7 @@ const Login = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form className="space-y-4 md:space-y-6" >
                   <div>
                       <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                       <input onChange={(e)=>(handleChange(e))} 
@@ -43,7 +58,7 @@ const Login = () => {
                       type="email" name="email"  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required=""/>
                   </div>
                   <div>
-                      <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                      <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                       <input onChange={(e)=>(handleChange(e))}  type="password" name="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""/>
                   </div>
                   <div className="flex items-center justify-between">
@@ -52,7 +67,7 @@ const Login = () => {
                             <input  aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required=""/>
                           </div>
                           <div className="ml-3 text-sm">
-                            <label for="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
+                            <label  className="text-gray-500 dark:text-gray-300">Remember me</label>
                           </div>
                       </div>
                       <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
@@ -63,7 +78,7 @@ const Login = () => {
                   </p>
 
                   <div>
-                    <button onClick={handleSubmit}> 
+                    <button onClick={(e)=>handleSubmit(e)}> 
                         Submit
                     </button>
                   </div>
