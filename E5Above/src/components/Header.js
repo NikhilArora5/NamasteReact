@@ -11,6 +11,7 @@ import { userLogout } from "../Api/auth"
 import { useNavigate } from "react-router-dom"
 import { clearCart } from "../Redux/slices/cartSlice"
 import { useDispatch } from "react-redux"
+import { clearCart } from "../Redux/slices/cartSlice"
 
 // common classes
 let li="mx-4"
@@ -23,7 +24,9 @@ const Header=()=>{
     const [loginBtn,setLoginBtn]=useState("Login")
     const {loggedInUser,isLoggedIn,setIsLoggedIn,}=useContext(userContext)
 
-    const cartItems=useSelector((store)=>(store.cart.items))
+    
+const {items,totalPrice,totalItems}=useSelector((store)=>(store.cart))
+let cartItems=items
 
     
 
@@ -71,7 +74,7 @@ useEffect(()=>{
               <li className={li}> <Link to={"/contact"}>Contact</Link> </li>
               {/* <li className={li}> <Link to={"/grocery"}>Grocery</Link> </li> */}
            
-              <li  className= "font-bold mx-1">  <Link to={"/cart"}>Cart({cartItems.length})</Link></li>
+              <li  className= "font-bold mx-1">  <Link to={"/cart"}>Cart({totalItems})</Link></li>
               {isLoggedIn?<li  className={li}>{loggedInUser}</li>:""}
               <button className="login-Btn" 
               onClick={()=>(isLoggedIn?auth():null)}>

@@ -15,6 +15,7 @@
     import store from "./Redux/store"
     import Cart from "./components/Cart"
 import Demo from "./components/Demo"
+import CartItem2 from "./components/CartItem2"
 
     const Grocery=lazy(()=>import("./components/Grocery"))
 
@@ -90,6 +91,10 @@ const appRouter=createBrowserRouter(
                 {
                     path:"/demo",
                     element:<Demo></Demo>
+                        },
+                {
+                    path:"/cart2",
+                    element:<CartItem2/>
                         },
 
 
