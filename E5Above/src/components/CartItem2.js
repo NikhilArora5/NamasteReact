@@ -2,12 +2,17 @@ import React from 'react'
 import { CDN_URL } from '../utils/constants'
 import { useDispatch } from 'react-redux'
 import { addItem,clearCart,removeItem } from '../Redux/slices/cartSlice'
+
+
 const CartItem2 = (props) => {
 
     let dispatch=useDispatch()
     let {item}=props
     let ItemPrice=item?.price?item?.price/100:item?.defaultPrice/100
     console.log("------------CAR ITEM",item)
+
+ 
+
   return (
     
     <div className="rounded-lg md:w-2/3">
