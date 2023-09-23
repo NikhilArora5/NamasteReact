@@ -3,11 +3,12 @@ import { endPoint } from '../utils/endPoint'
 import axios from 'axios'
 import Razorpay from 'razorpay'
 const CartSummary = (props) => {
-  let {totalPrice}=props
+  let {totalPrice,cartItems}=props
   console.log("---------totalPrice in summary",totalPrice)
   const placeOrder=async()=>{
     let postData={
-      amount:totalPrice
+      amount:totalPrice,
+      items:cartItems
     }
 
     let {data}= await axios.post(`${endPoint}/orders/order`,postData)
@@ -17,21 +18,22 @@ const CartSummary = (props) => {
     var options = {
       key: "rzp_test_91ew5wicy4mmG4", 
     amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currenc: "INR",
-      nam: "Food cafe", //your business name
-      descriptio: "Test Transaction",
-      imag: "https://example.com/your_logo",
-      order_i: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_ur: "https://eneqd3r9zrjok.x.pipedream.net/",
-      prefil: { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+      currency: "INR",
+      name: "Food cafe", //your business name
+      description: "Test Transaction",
+      image: "https://example.com/your_logo",
+      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      callback_url: `${endPoint}/orders/transactionCheck?razorPay_id=${order.id}&orderId=${order.orderId}`,
+      // callback_url: `${endPoint}/orders//transactionCheck`,
+      prefill: { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
           "name": "Gaurav Kumar", //your customer's name
           "email": "gaurav.kumar@example.com",
           "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
       },
-      note: {
+      notes: {
           "address": "Razorpay Corporate Office"
       },
-      them: {
+      theme: {
           "color": "#3399cc"
       }
   };

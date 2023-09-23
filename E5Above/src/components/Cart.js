@@ -59,7 +59,7 @@ return (
       </div>
 
       <div className='w-3/12'>
-        <CartSummary totalItems={totalItems} totalPrice={totalPrice}></CartSummary>
+        <CartSummary totalItems={totalItems} totalPrice={totalPrice} cartItems={cartItems}></CartSummary>
       </div>
     </div>
   );

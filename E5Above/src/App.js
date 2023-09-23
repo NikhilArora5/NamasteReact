@@ -16,6 +16,7 @@
     import Cart from "./components/Cart"
 import Demo from "./components/Demo"
 import CartItem2 from "./components/CartItem2"
+import PaymentSuccess from "./components/PaymentSuccess"
 
     const Grocery=lazy(()=>import("./components/Grocery"))
 
@@ -91,6 +92,10 @@ const appRouter=createBrowserRouter(
                 {
                     path:"/demo",
                     element:<Demo></Demo>
+                        },
+                {
+                    path:"/paymentsuccess",
+                    element:<PaymentSuccess></PaymentSuccess>
                         },
                 {
                     path:"/cart2",
